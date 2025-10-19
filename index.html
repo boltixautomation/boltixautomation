@@ -193,20 +193,45 @@
             box-shadow: 0 0 20px var(--primary-color);
         }
         
+        /* --- NEW STYLES FOR COPY FUNCTIONALITY --- */
         .contact-info {
             margin-top: 40px;
             font-size: 0.9rem;
             color: rgba(224, 224, 224, 0.8);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .contact-info a {
+        #email-text {
             color: var(--primary-color);
-            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        #copy-email-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+        
+        #copy-email-btn:hover {
+            background-color: var(--card-background);
         }
 
-        .contact-info a:hover {
-            text-decoration: underline;
+        #copy-email-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary-color);
         }
+        /* --- END OF NEW STYLES --- */
 
         @media (max-width: 600px) {
             .container {
@@ -271,11 +296,47 @@
             </a>
         </div>
         
-        <p class="contact-info">
-            For inquiries, contact us at: <a href="mailto:boltixautomation@gmail.com">boltixautomation@gmail.com</a>
-        </p>
+        <div class="contact-info">
+            <span>For inquiries, contact us at:</span>
+            <div>
+                <span id="email-text">boltixautomation@gmail.com</span>
+                <button id="copy-email-btn" title="Copy email address">
+                    <svg viewBox="0 0 24 24" id="copy-icon"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                    <span id="copy-feedback" style="display: none;">Copied!</span>
+                </button>
+            </div>
+        </div>
         
     </div>
 
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyBtn = document.getElementById('copy-email-btn');
+            const emailText = document.getElementById('email-text').textContent;
+            const copyIcon = document.getElementById('copy-icon');
+            const copyFeedback = document.getElementById('copy-feedback');
+
+            copyBtn.addEventListener('click', function() {
+                // Use the modern Navigator Clipboard API
+                navigator.clipboard.writeText(emailText).then(function() {
+                    // Success feedback
+                    copyIcon.style.display = 'none';
+                    copyFeedback.style.display = 'inline';
+                    copyBtn.style.width = '70px'; // Give space for text
+
+                    // Revert back after 2 seconds
+                    setTimeout(function() {
+                        copyIcon.style.display = 'inline';
+                        copyFeedback.style.display = 'none';
+                        copyBtn.style.width = 'auto';
+                    }, 2000);
+
+                }).catch(function(err) {
+                    // Handle potential errors, e.g., in very old browsers
+                    console.error('Could not copy text: ', err);
+                });
+            });
+        });
+    </script>
+    </body>
 </html>
