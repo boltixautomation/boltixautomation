@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Domain for Sale | Boltixautomation</title>
-
     <meta name="description" content="Acquire Boltixautomation.com, a premium, brandable domain perfect for a leader in the tech and automation industry. Instantly credible and memorable. Make an offer today!">
-
     <link rel="canonical" href="https://www.boltixautomation.com">
-
     <meta property="og:title" content="Domain for Sale | Boltixautomation">
     <meta property="og:description" content="A premium, brandable domain engineered for a market leader in the automation space.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.boltixautomation.com">
     <meta property="og:site_name" content="Boltixautomation For Sale">
-
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Domain for Sale | Boltixautomation">
     <meta name="twitter:description" content="A premium, brandable domain engineered for a market leader in the automation space.">
@@ -211,11 +207,11 @@
         #copy-email-btn svg { width: 16px; height: 16px; fill: var(--primary-color); }
         #copy-feedback { color: var(--primary-color); font-family: 'Roboto', sans-serif; font-size: 0.9rem; }
         
-        /* --- NEW FOOTER STYLES --- */
+        /* --- UNIFIED FOOTER STYLES --- */
         .site-footer {
             width: 100%;
             text-align: center;
-            padding: 40px 20px;
+            padding: 25px 20px 20px 20px; /* Corrected spacing */
             color: #aaa;
             font-size: 0.9rem;
         }
@@ -223,6 +219,7 @@
             color: var(--primary-color);
             margin: 0 10px;
             text-decoration: none;
+            font-weight: bold; /* Added bold font-weight */
         }
         .site-footer nav a:hover {
             text-decoration: underline;
@@ -230,26 +227,22 @@
         .site-footer p {
             margin-top: 15px;
         }
-        /* --- END NEW FOOTER STYLES --- */
+        /* --- END UNIFIED FOOTER STYLES --- */
 
         @media (max-width: 600px) {
             .headline { font-size: 1.8rem; }
             .domain-name-box { font-size: 1.4rem; word-break: break-all; }
             .cta-button { display: block; width: 100%; }
 
-            /* --- NEW FOOTER MOBILE STYLES --- */
-            .site-footer {
-                padding-top: 25px; /* Reduced space from content above */
-                padding-bottom: 20px;
-            }
+            /* --- FOOTER MOBILE STYLES --- */
             .site-footer nav {
-                white-space: nowrap; /* Keeps links on one line */
+                white-space: nowrap; 
             }
             .site-footer nav a {
-                margin: 0 5px; /* Reduces space between links */
-                font-size: 0.8rem; /* Makes text smaller to fit */
+                margin: 0 5px;
+                font-size: 0.8rem;
             }
-            /* --- END NEW FOOTER MOBILE STYLES --- */
+            /* --- END FOOTER MOBILE STYLES --- */
         }
     </style>
 </head>
@@ -312,7 +305,7 @@
             }
             copyBtn.addEventListener('click', function() {
                 if (!navigator.clipboard) {
-                    fallbackCopyTextToClipboard(emailText);
+                    fallbackCopyTextToClipboard(text);
                     return;
                 }
                 navigator.clipboard.writeText(emailText).then(function() {
